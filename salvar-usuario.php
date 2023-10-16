@@ -42,8 +42,16 @@ switch ($_REQUEST["acao"]){
         }
         break;
 
-    case 'ecluir':
-        //code
+    case 'excluir':
+      $sql = "DELETE FROM usuarios WHERE id=".$_REQUEST["id"];
+      $res = $conn->query($sql);
+      if($res==true){
+        print "<script>alert('Excluido com sucesso oh tangerino');</script>";
+        print "<script>location.href='?page=listar';</script>";
+    }else{
+        print "<script>alert('Não foi possível excluir');</script>";
+        print "<script>location.href='?page=listar';</script>";
+    }
         break;        
 
 }
